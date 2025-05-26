@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Светлая тема -->
+    <style name="Theme.MeditationApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/secondary</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <!-- Темная тема -->
+    <style name="Theme.MeditationApp.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/primary_dark_theme</item>
+        <item name="colorPrimaryDark">@color/primary_dark_dark_theme</item>
+        <item name="colorAccent">@color/secondary</item>
+        <item name="android:windowBackground">@color/background_dark_theme</item>
+    </style>
+</resources>

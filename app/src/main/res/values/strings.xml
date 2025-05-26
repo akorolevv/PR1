@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meditation App</string>
+
+    <!-- Общие -->
+    <string name="action_continue">Продолжить</string>
+    <string name="action_next">Далее</string>
+    <string name="action_skip">Пропустить</string>
+    <string name="action_back">Назад</string>
+
+    <!-- Авторизация и регистрация -->
+    <string name="login_title">Добро пожаловать</string>
+    <string name="login_subtitle">Войдите, чтобы продолжить</string>
+    <string name="login_action">Войти</string>
+    <string name="register_title">Создайте аккаунт</string>
+    <string name="register_subtitle">Начните свой путь к спокойствию</string>
+    <string name="register_action">Зарегистрироваться</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Пароль</string>
+    <string name="name_hint">Ваше имя</string>
+    <string name="no_account">Еще нет аккаунта?</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="already_have_account">Уже есть аккаунт?</string>
+    <string name="sign_in">Войти</string>
+    <string name="forgot_password">Забыли пароль?</string>
+
+    <!-- Онбординг -->
+    <string name="onboarding_title_1">Медитация для спокойствия</string>
+    <string name="onboarding_title_2">Улучшите свой сон</string>
+    <string name="onboarding_title_3">Снизьте уровень стресса</string>
+    <string name="onboarding_desc_1">Найдите внутреннее спокойствие с нашими ежедневными медитациями</string>
+    <string name="onboarding_desc_2">Спите лучше с нашими сонными историями и звуками природы</string>
+    <string name="onboarding_desc_3">Управляйте стрессом и тревогой с помощью дыхательных упражнений</string>
+
+    <!-- Главный экран -->
+    <string name="home_title">Добрый день</string>
+    <string name="home_subtitle">Как вы себя чувствуете сегодня?</string>
+    <string name="recommended">Рекомендуемые медитации</string>
+    <string name="daily_meditation">Медитация дня</string>
+    <string name="popular">Популярные</string>
+    <string name="categories">Категории</string>
+    <string name="see_all">Смотреть все</string>
+
+    <!-- Категории -->
+    <string name="category_sleep">Сон</string>
+    <string name="category_anxiety">Тревога</string>
+    <string name="category_stress">Стресс</string>
+    <string name="category_focus">Концентрация</string>
+    <string name="category_morning">Утренние</string>
+    <string name="category_evening">Вечерние</string>
+
+    <!-- Поиск -->
+    <string name="search_title">Поиск</string>
+    <string name="search_hint">Найти медитации, музыку, истории...</string>
+    <string name="search_placeholder">Что вы хотите найти?</string>
+    <string name="search_recent">Недавние запросы</string>
+    <string name="search_popular">Популярные запросы</string>
+    <string name="no_results">Нет результатов</string>
+
+    <!-- Профиль -->
+    <string name="profile_title">Мой профиль</string>
+    <string name="profile_stats">Статистика</string>
+    <string name="profile_settings">Настройки</string>
+    <string name="profile_favorites">Избранное</string>
+    <string name="profile_logout">Выйти</string>
+    <string name="profile_minutes">Минуты медитации</string>
+    <string name="profile_sessions">Сессии</string>
+    <string name="profile_days">Дни подряд</string>
+
+    <!-- Детали медитации -->
+    <string name="meditation_duration">%d мин</string>
+    <string name="meditation_start">Начать</string>
+    <string name="meditation_add_favorite">Добавить в избранное</string>
+    <string name="meditation_remove_favorite">Удалить из избранного</string>
+    <string name="meditation_description">Описание</string>
+    <string name="meditation_benefits">Польза</string>
+    <string name="meditation_author">Автор</string>
+
+    <!-- Проигрыватель -->
+    <string name="player_pause">Пауза</string>
+    <string name="player_play">Воспроизвести</string>
+    <string name="player_stop">Стоп</string>
+    <string name="player_forward">Вперед 30 сек</string>
+    <string name="player_backward">Назад 30 сек</string>
+
+    <string name="no_quotes_found">Цитаты не найдены</string>
+    <string name="retry">Обновить</string>
+
+
+    <string name="try_another_search">Попробуйте изменить запрос</string>
+    <string name="error_loading_quotes">Ошибка загрузки</string>
+
+</resources>
