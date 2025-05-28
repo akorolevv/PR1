@@ -1,3 +1,4 @@
+// app/src/main/java/com/example/pr1/data/models/UserModels.kt
 package com.example.pr1.data.models
 
 data class UserRegistrationRequest(
@@ -7,14 +8,15 @@ data class UserRegistrationRequest(
 )
 
 data class UserLoginRequest(
-    val email: String,  // ИЗМЕНЕНО: теперь email вместо login
+    val email: String,
     val password: String
 )
 
 data class UserResponse(
     val id: Int,
     val login: String,
-    val email: String
+    val email: String,
+    val status: String
 )
 
 data class AuthResponse(
@@ -27,4 +29,14 @@ data class AuthResponse(
 data class FavoriteResponse(
     val success: Boolean,
     val message: String
+)
+
+data class UpdateStatusRequest(
+    val status: String
+)
+
+data class UpdateStatusResponse(
+    val success: Boolean,
+    val message: String,
+    val status: String? = null
 )

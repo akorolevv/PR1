@@ -1,6 +1,7 @@
 package com.example.pr1
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -81,13 +82,26 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupRecyclerViews() {
-        // Настройка адаптера для результатов поиска
+        // ИСПРАВЛЕНО: Настройка адаптера для результатов поиска с правильным коллбеком
         exerciseAdapter = ExerciseAdapter(emptyList()) { exercise ->
             // Добавляем элемент в историю при клике на результат
-            // Исправляем: проверяем на null
             exercise.name?.let { name ->
                 addToSearchHistory(name)
             }
+
+            // ДОБАВЛЕНО: Открываем экран деталей упражнения
+            val intent = Intent(requireContext(), ExerciseDetailActivity::class.java).apply {
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_ID, exercise.id)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_NAME, exercise.name)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_BODY_PART, exercise.bodyPart)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_TARGET, exercise.target)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_EQUIPMENT, exercise.equipment)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DESCRIPTION, exercise.description)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DIFFICULTY, exercise.difficulty)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DURATION, exercise.duration)
+                putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_INSTRUCTIONS, exercise.instructions)
+            }
+            startActivity(intent)
         }
 
         binding.searchResults.apply {

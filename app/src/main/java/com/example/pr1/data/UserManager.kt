@@ -1,3 +1,4 @@
+// app/src/main/java/com/example/pr1/data/UserManager.kt
 package com.example.pr1.data
 
 import android.content.Context
@@ -20,7 +21,8 @@ class UserManager(private val context: Context) {
         private const val KEY_USER_ID = "user_id"
         private const val KEY_USER_LOGIN = "user_login"
         private const val KEY_USER_EMAIL = "user_email"
-        private const val BASE_URL = "http://10.0.2.2:8080/" // Для эмулятора
+        private const val KEY_USER_STATUS = "user_status"
+        private const val BASE_URL = "http://10.0.2.2:8080/"
     }
 
     private val sharedPrefs: SharedPreferences =
@@ -48,7 +50,6 @@ class UserManager(private val context: Context) {
                 if (response.isSuccessful && response.body() != null) {
                     val authResponse = response.body()!!
                     if (authResponse.success) {
-                        // Сохраняем данные пользователя
                         saveUserData(authResponse)
                         onSuccess(authResponse)
                     } else {
@@ -68,19 +69,18 @@ class UserManager(private val context: Context) {
 
     // Вход пользователя
     fun loginUser(
-        email: String,  // ИЗМЕНЕНО: параметр email вместо login
+        email: String,
         password: String,
         onSuccess: (AuthResponse) -> Unit,
         onError: (String) -> Unit
     ) {
-        val request = UserLoginRequest(email, password)  // ИЗМЕНЕНО: используем email
+        val request = UserLoginRequest(email, password)
 
         userApiService.loginUser(request).enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if (response.isSuccessful && response.body() != null) {
                     val authResponse = response.body()!!
                     if (authResponse.success) {
-                        // Сохраняем данные пользователя
                         saveUserData(authResponse)
                         onSuccess(authResponse)
                     } else {
@@ -109,6 +109,7 @@ class UserManager(private val context: Context) {
                 putInt(KEY_USER_ID, user.id)
                 putString(KEY_USER_LOGIN, user.login)
                 putString(KEY_USER_EMAIL, user.email)
+                putString(KEY_USER_STATUS, user.status)
                 apply()
             }
         }
@@ -130,12 +131,56 @@ class UserManager(private val context: Context) {
         val userId = sharedPrefs.getInt(KEY_USER_ID, -1)
         val login = sharedPrefs.getString(KEY_USER_LOGIN, null)
         val email = sharedPrefs.getString(KEY_USER_EMAIL, null)
+        val status = sharedPrefs.getString(KEY_USER_STATUS, null)
 
         return if (token != null && userId != -1 && login != null && email != null) {
-            UserResponse(userId, login, email)
+            UserResponse(userId, login, email, status ?: "Новичок в медитации 🧘‍♀️")
         } else {
             null
         }
+    }
+
+    // НОВЫЙ МЕТОД: Обновление статуса пользователя
+    fun updateUserStatus(
+        newStatus: String,
+        onSuccess: (String) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        val token = getToken()
+        if (token == null) {
+            onError("Требуется авторизация")
+            return
+        }
+
+        val request = UpdateStatusRequest(newStatus)
+
+        userApiService.updateUserStatus("Bearer $token", request)
+            .enqueue(object : Callback<UpdateStatusResponse> {
+                override fun onResponse(
+                    call: Call<UpdateStatusResponse>,
+                    response: Response<UpdateStatusResponse>
+                ) {
+                    if (response.isSuccessful && response.body() != null) {
+                        val updateResponse = response.body()!!
+                        if (updateResponse.success && updateResponse.status != null) {
+                            // Обновляем локально сохраненный статус
+                            sharedPrefs.edit()
+                                .putString(KEY_USER_STATUS, updateResponse.status)
+                                .apply()
+                            onSuccess(updateResponse.status)
+                        } else {
+                            onError(updateResponse.message)
+                        }
+                    } else {
+                        onError("Ошибка: ${response.code()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<UpdateStatusResponse>, t: Throwable) {
+                    Log.e(TAG, "Update status failed", t)
+                    onError("Ошибка сети: ${t.message}")
+                }
+            })
     }
 
     // Выход из аккаунта
@@ -143,7 +188,7 @@ class UserManager(private val context: Context) {
         sharedPrefs.edit().clear().apply()
     }
 
-    // Работа с избранным
+    // Работа с избранным (без изменений)
     fun addToFavorites(
         exerciseId: Int,
         onSuccess: () -> Unit,

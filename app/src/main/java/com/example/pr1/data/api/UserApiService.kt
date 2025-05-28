@@ -1,3 +1,4 @@
+// app/src/main/java/com/example/pr1/data/api/UserApiService.kt
 package com.example.pr1.data.api
 
 import com.example.pr1.data.models.*
@@ -34,4 +35,11 @@ interface UserApiService {
         @Path("exerciseId") exerciseId: Int,
         @Header("Authorization") token: String
     ): Call<Map<String, Boolean>>
+
+    // НОВЫЙ МЕТОД: Обновление статуса пользователя
+    @PUT("auth/status")
+    fun updateUserStatus(
+        @Header("Authorization") token: String,
+        @Body request: UpdateStatusRequest
+    ): Call<UpdateStatusResponse>
 }

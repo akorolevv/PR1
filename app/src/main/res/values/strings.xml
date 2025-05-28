@@ -63,9 +63,21 @@
     <string name="profile_settings">Настройки</string>
     <string name="profile_favorites">Избранное</string>
     <string name="profile_logout">Выйти</string>
-    <string name="profile_minutes">Минуты медитации</string>
-    <string name="profile_sessions">Сессии</string>
-    <string name="profile_days">Дни подряд</string>
+
+    <!-- НОВЫЕ СТРОКИ ДЛЯ СТАТУСА -->
+    <string name="profile_status">Мой статус</string>
+    <string name="edit_status">Редактировать статус</string>
+    <string name="status_hint">Расскажите о себе или своих целях (до 255 символов)</string>
+    <string name="status_updated">Статус обновлен!</string>
+    <string name="status_empty_error">Статус не может быть пустым</string>
+    <string name="status_too_long_error">Статус не может быть длиннее 255 символов</string>
+    <string name="edit_status_title">Редактирование статуса</string>
+    <string name="edit_status_message">Расскажите о себе или своих целях в медитации</string>
+
+    <!-- Убираем старые строки статистики -->
+    <!-- <string name="profile_minutes">Минуты медитации</string> -->
+    <!-- <string name="profile_sessions">Сессии</string> -->
+    <!-- <string name="profile_days">Дни подряд</string> -->
 
     <!-- Детали медитации -->
     <string name="meditation_duration">%d мин</string>
