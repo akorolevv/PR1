@@ -68,12 +68,12 @@ class UserManager(private val context: Context) {
 
     // Вход пользователя
     fun loginUser(
-        login: String,
+        email: String,  // ИЗМЕНЕНО: параметр email вместо login
         password: String,
         onSuccess: (AuthResponse) -> Unit,
         onError: (String) -> Unit
     ) {
-        val request = UserLoginRequest(login, password)
+        val request = UserLoginRequest(email, password)  // ИЗМЕНЕНО: используем email
 
         userApiService.loginUser(request).enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {

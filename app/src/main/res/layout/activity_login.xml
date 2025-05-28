@@ -70,16 +70,6 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:text="@string/forgot_password"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/text_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password_layout" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_button"
@@ -91,7 +81,7 @@
             android:textAllCaps="false"
             android:textSize="@dimen/text_medium"
             app:cornerRadius="@dimen/radius_medium"
-            app:layout_constraintTop_toBottomOf="@id/forgot_password" />
+            app:layout_constraintTop_toBottomOf="@id/password_layout" />
 
         <LinearLayout
             android:id="@+id/register_container"

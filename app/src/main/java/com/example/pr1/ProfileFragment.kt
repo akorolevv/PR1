@@ -65,9 +65,12 @@ class ProfileFragment : Fragment() {
                 .commit()
         }
 
+        // УДАЛЕНО: обработчик settings_button
+        /*
         binding.settingsButton.setOnClickListener {
             // Здесь могла бы быть обработка нажатия на кнопку настроек
         }
+        */
     }
 
     private fun setupThemeSwitcher() {

@@ -40,12 +40,18 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
-        val login = binding.emailInput.text.toString().trim()
+        val email = binding.emailInput.text.toString().trim()  // ИЗМЕНЕНО: теперь это email
         val password = binding.passwordInput.text.toString().trim()
 
         // Простая валидация
-        if (login.isEmpty()) {
-            binding.emailLayout.error = "Введите логин"
+        if (email.isEmpty()) {
+            binding.emailLayout.error = "Введите email"  // ИЗМЕНЕНО: сообщение об email
+            return
+        }
+
+        // ДОБАВЛЕНО: валидация формата email
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.emailLayout.error = "Введите корректный email"
             return
         }
 
@@ -63,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.text = "Входим..."
 
         userManager.loginUser(
-            login = login,
+            email = email,  // ИЗМЕНЕНО: передаем email
             password = password,
             onSuccess = { authResponse ->
                 runOnUiThread {

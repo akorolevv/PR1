@@ -7,7 +7,7 @@ data class UserRegistrationRequest(
 )
 
 data class UserLoginRequest(
-    val login: String,
+    val email: String,  // ИЗМЕНЕНО: теперь email вместо login
     val password: String
 )
 
