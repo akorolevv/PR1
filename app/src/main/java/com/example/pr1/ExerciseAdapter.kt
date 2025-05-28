@@ -1,5 +1,6 @@
 package com.example.pr1
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -40,7 +41,23 @@ class ExerciseAdapter(
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    onExerciseClick(exercises[position])
+                    val exercise = exercises[position]
+
+                    // Создаем Intent для перехода к деталям упражнения
+                    val intent = Intent(binding.root.context, ExerciseDetailActivity::class.java).apply {
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_ID, exercise.id)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_NAME, exercise.name)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_BODY_PART, exercise.bodyPart)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_TARGET, exercise.target)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_EQUIPMENT, exercise.equipment)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DESCRIPTION, exercise.description)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DIFFICULTY, exercise.difficulty)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DURATION, exercise.duration)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_INSTRUCTIONS, exercise.instructions)
+                    }
+
+                    binding.root.context.startActivity(intent)
+                    onExerciseClick(exercise)
                 }
             }
 
@@ -51,13 +68,28 @@ class ExerciseAdapter(
         }
 
         fun bind(exercise: ExerciseResponse) {
-            // Используем capitalize для улучшения отображения названия
-            binding.meditationTitle.text = exercise.name.capitalizeWords()
+            // Отображаем название как есть (уже на русском)
+            binding.meditationTitle.text = exercise.name.ifEmpty { "Без названия" }
 
-            // Более четкое и структурированное отображение информации
-            val bodyPart = exercise.bodyPart.capitalizeWords()
-            val target = exercise.target.capitalizeWords()
-            binding.meditationInfo.text = "Часть тела: $bodyPart • Цель: $target"
+            // Более подробная информация об упражнении
+            val info = buildString {
+                if (exercise.bodyPart.isNotBlank()) {
+                    append("Область: ${exercise.bodyPart}")
+                }
+                if (exercise.target.isNotBlank()) {
+                    if (isNotEmpty()) append(" • ")
+                    append("Цель: ${exercise.target}")
+                }
+                if (exercise.duration > 0) {
+                    if (isNotEmpty()) append(" • ")
+                    append("${exercise.duration} мин")
+                }
+                if (exercise.difficulty.isNotBlank()) {
+                    if (isNotEmpty()) append(" • ")
+                    append(exercise.difficulty)
+                }
+            }
+            binding.meditationInfo.text = if (info.isNotEmpty()) info else "Информация недоступна"
         }
 
         // Функция для преобразования текста в формат "Каждое Слово С Большой Буквы"

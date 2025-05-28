@@ -14,19 +14,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ExerciseRepository(private val context: Context) {
 
     companion object {
-        private const val API_KEY = "b3ea175a4dmshb8a6c2db5695ee2p173a06jsne4066b3a30d9"
-        private const val API_HOST = "exercisedb.p.rapidapi.com"
         private const val TAG = "ExerciseRepository"
+        private const val BASE_URL = "http://10.0.2.2:8080/" // Для эмулятора Android
+        // Для реального устройства используйте: "http://192.168.X.X:8080/" (ваш IP)
     }
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://exercisedb.p.rapidapi.com/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     private val exerciseApiService = retrofit.create(ExerciseApiService::class.java)
 
-    // Функция поиска упражнений с обратным вызовом
     fun searchExercises(
         query: String,
         onSuccess: (List<ExerciseResponse>) -> Unit,
@@ -34,46 +33,35 @@ class ExerciseRepository(private val context: Context) {
     ) {
         Log.d(TAG, "Начинаем поиск с запросом: $query")
 
-        // Сначала запрашиваем все упражнения, потом фильтруем локально
-        // Это исправит проблему с некорректными результатами
-        exerciseApiService.getAllExercises(API_KEY, API_HOST)
-            .enqueue(object : Callback<List<ExerciseResponse>> {
-                override fun onResponse(
-                    call: Call<List<ExerciseResponse>>,
-                    response: Response<List<ExerciseResponse>>
-                ) {
-                    Log.d(TAG, "Получен ответ с кодом: ${response.code()}")
+        val call = if (query.isEmpty()) {
+            exerciseApiService.getAllExercises()
+        } else {
+            exerciseApiService.searchExercisesByQuery(query)
+        }
 
-                    if (response.isSuccessful && response.body() != null) {
-                        val allExercises = response.body()!!
-                        Log.d(TAG, "Получено всего упражнений: ${allExercises.size}")
+        call.enqueue(object : Callback<List<ExerciseResponse>> {
+            override fun onResponse(
+                call: Call<List<ExerciseResponse>>,
+                response: Response<List<ExerciseResponse>>
+            ) {
+                Log.d(TAG, "Получен ответ с кодом: ${response.code()}")
 
-                        // Фильтруем упражнения локально по запросу
-                        val filteredExercises = allExercises.filter {
-                            it.name.contains(query, ignoreCase = true) ||
-                                    it.bodyPart.contains(query, ignoreCase = true) ||
-                                    it.target.contains(query, ignoreCase = true) ||
-                                    it.equipment.contains(query, ignoreCase = true)
-                        }
-
-                        Log.d(TAG, "Отфильтровано упражнений: ${filteredExercises.size}")
-                        onSuccess(filteredExercises)
-                    } else {
-                        val errorMsg = "Error: ${response.code()} - ${response.message()}"
-                        Log.e(TAG, errorMsg)
-
-                        val errorBody = response.errorBody()?.string()
-                        Log.e(TAG, "Error body: $errorBody")
-
-                        onError(errorMsg)
-                    }
-                }
-
-                override fun onFailure(call: Call<List<ExerciseResponse>>, t: Throwable) {
-                    val errorMsg = "Network error: ${t.message}"
-                    Log.e(TAG, errorMsg, t)
+                if (response.isSuccessful && response.body() != null) {
+                    val exercises = response.body()!!
+                    Log.d(TAG, "Получено упражнений: ${exercises.size}")
+                    onSuccess(exercises)
+                } else {
+                    val errorMsg = "Error: ${response.code()} - ${response.message()}"
+                    Log.e(TAG, errorMsg)
                     onError(errorMsg)
                 }
-            })
+            }
+
+            override fun onFailure(call: Call<List<ExerciseResponse>>, t: Throwable) {
+                val errorMsg = "Network error: ${t.message}"
+                Log.e(TAG, errorMsg, t)
+                onError(errorMsg)
+            }
+        })
     }
 }

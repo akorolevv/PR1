@@ -84,7 +84,10 @@ class SearchFragment : Fragment() {
         // Настройка адаптера для результатов поиска
         exerciseAdapter = ExerciseAdapter(emptyList()) { exercise ->
             // Добавляем элемент в историю при клике на результат
-            addToSearchHistory(exercise.name)
+            // Исправляем: проверяем на null
+            exercise.name?.let { name ->
+                addToSearchHistory(name)
+            }
         }
 
         binding.searchResults.apply {
