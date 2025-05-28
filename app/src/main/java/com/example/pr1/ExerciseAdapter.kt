@@ -1,6 +1,5 @@
 package com.example.pr1
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -42,21 +41,7 @@ class ExerciseAdapter(
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val exercise = exercises[position]
-
-                    // Создаем Intent для перехода к деталям упражнения
-                    val intent = Intent(binding.root.context, ExerciseDetailActivity::class.java).apply {
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_ID, exercise.id)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_NAME, exercise.name ?: "")
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_BODY_PART, exercise.bodyPart ?: "")
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_TARGET, exercise.target ?: "")
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_EQUIPMENT, exercise.equipment ?: "")
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DESCRIPTION, exercise.description ?: "")
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DIFFICULTY, exercise.difficulty ?: "")
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DURATION, exercise.duration)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_INSTRUCTIONS, exercise.instructions ?: "")
-                    }
-
-                    binding.root.context.startActivity(intent)
+                    // ИСПРАВЛЕНО: Убрали дублирование - теперь только вызываем коллбек
                     onExerciseClick(exercise)
                 }
             }
