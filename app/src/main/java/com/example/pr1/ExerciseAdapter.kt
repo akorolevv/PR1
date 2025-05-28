@@ -46,14 +46,14 @@ class ExerciseAdapter(
                     // Создаем Intent для перехода к деталям упражнения
                     val intent = Intent(binding.root.context, ExerciseDetailActivity::class.java).apply {
                         putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_ID, exercise.id)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_NAME, exercise.name)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_BODY_PART, exercise.bodyPart)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_TARGET, exercise.target)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_EQUIPMENT, exercise.equipment)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DESCRIPTION, exercise.description)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DIFFICULTY, exercise.difficulty)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_NAME, exercise.name ?: "")
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_BODY_PART, exercise.bodyPart ?: "")
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_TARGET, exercise.target ?: "")
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_EQUIPMENT, exercise.equipment ?: "")
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DESCRIPTION, exercise.description ?: "")
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DIFFICULTY, exercise.difficulty ?: "")
                         putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_DURATION, exercise.duration)
-                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_INSTRUCTIONS, exercise.instructions)
+                        putExtra(ExerciseDetailActivity.EXTRA_EXERCISE_INSTRUCTIONS, exercise.instructions ?: "")
                     }
 
                     binding.root.context.startActivity(intent)
@@ -68,25 +68,30 @@ class ExerciseAdapter(
         }
 
         fun bind(exercise: ExerciseResponse) {
-            // Отображаем название как есть (уже на русском)
-            binding.meditationTitle.text = exercise.name.ifEmpty { "Без названия" }
+            // Безопасное отображение названия с проверкой на null
+            val safeName = exercise.name?.takeIf { it.isNotBlank() } ?: "Без названия"
+            binding.meditationTitle.text = safeName
 
-            // Более подробная информация об упражнении
+            // Более подробная информация об упражнении с проверками на null
             val info = buildString {
-                if (exercise.bodyPart.isNotBlank()) {
-                    append("Область: ${exercise.bodyPart}")
+                val safeBodyPart = exercise.bodyPart?.takeIf { it.isNotBlank() }
+                val safeTarget = exercise.target?.takeIf { it.isNotBlank() }
+                val safeDifficulty = exercise.difficulty?.takeIf { it.isNotBlank() }
+
+                if (safeBodyPart != null) {
+                    append("Область: $safeBodyPart")
                 }
-                if (exercise.target.isNotBlank()) {
+                if (safeTarget != null) {
                     if (isNotEmpty()) append(" • ")
-                    append("Цель: ${exercise.target}")
+                    append("Цель: $safeTarget")
                 }
                 if (exercise.duration > 0) {
                     if (isNotEmpty()) append(" • ")
                     append("${exercise.duration} мин")
                 }
-                if (exercise.difficulty.isNotBlank()) {
+                if (safeDifficulty != null) {
                     if (isNotEmpty()) append(" • ")
-                    append(exercise.difficulty)
+                    append(safeDifficulty)
                 }
             }
             binding.meditationInfo.text = if (info.isNotEmpty()) info else "Информация недоступна"

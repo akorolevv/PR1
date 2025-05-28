@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.pr1.data.UserManager
 import com.example.pr1.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private lateinit var userManager: UserManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,13 +27,30 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userManager = UserManager(requireContext())
+
+        setupUserInfo()
         setupClickListeners()
         setupThemeSwitcher()
     }
 
+    private fun setupUserInfo() {
+        val currentUser = userManager.getCurrentUser()
+        if (currentUser != null) {
+            binding.profileName.text = currentUser.login
+            binding.profileEmail.text = currentUser.email
+        } else {
+            binding.profileName.text = "Пользователь"
+            binding.profileEmail.text = "user@example.com"
+        }
+    }
+
     private fun setupClickListeners() {
         binding.logoutButton.setOnClickListener {
-            // В реальном приложении здесь был бы выход из аккаунта
+            // Выходим из аккаунта
+            userManager.logout()
+
+            // Переходим на экран логина
             val intent = Intent(activity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

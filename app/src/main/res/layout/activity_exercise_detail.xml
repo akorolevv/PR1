@@ -32,6 +32,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />
 
+        <!-- Кнопка избранного -->
+        <ImageView
+            android:id="@+id/favorite_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@android:drawable/btn_star"
+            android:contentDescription="Add to favorites"
+            android:padding="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
         <!-- Контент -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

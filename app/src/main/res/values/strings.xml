@@ -17,7 +17,7 @@
     <string name="register_action">Зарегистрироваться</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Пароль</string>
-    <string name="name_hint">Ваше имя</string>
+    <string name="name_hint">Ваш логин</string>
     <string name="no_account">Еще нет аккаунта?</string>
     <string name="create_account">Создать аккаунт</string>
     <string name="already_have_account">Уже есть аккаунт?</string>
@@ -85,7 +85,6 @@
 
     <string name="no_quotes_found">Цитаты не найдены</string>
     <string name="retry">Обновить</string>
-
 
     <string name="try_another_search">Попробуйте изменить запрос</string>
     <string name="error_loading_quotes">Ошибка загрузки</string>
