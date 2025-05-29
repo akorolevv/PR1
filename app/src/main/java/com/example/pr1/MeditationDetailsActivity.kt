@@ -1,3 +1,4 @@
+// MeditationDetailsActivity.kt (обновленный)
 package com.example.pr1
 
 import android.os.Bundle
@@ -26,10 +27,9 @@ class MeditationDetailsActivity : AppCompatActivity() {
             toggleFavorite()
         }
 
-        binding.startMeditationButton.setOnClickListener {
-            // В реальном приложении здесь был бы запуск медитации
-            // Показываем заглушку для демонстрации
-        }
+        // Убираем обработчик нажатия на кнопку "Начать"
+        // Скрываем кнопку "Начать"
+        binding.startMeditationButton.visibility = android.view.View.GONE
     }
 
     private fun toggleFavorite() {

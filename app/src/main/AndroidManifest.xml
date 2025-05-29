@@ -49,8 +49,15 @@
         <activity
             android:name=".MeditationDetailsActivity"
             android:exported="false" />
+
         <activity
             android:name=".ExerciseDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MeditationApp" />
+
+        <!-- НОВАЯ АКТИВНОСТЬ для отображения упражнений по категориям -->
+        <activity
+            android:name=".CategoryExercisesActivity"
             android:exported="false"
             android:theme="@style/Theme.MeditationApp" />
 

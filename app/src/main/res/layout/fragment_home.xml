@@ -14,7 +14,7 @@
             android:id="@+id/welcome_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/home_title"
+            android:text="Здравствуйте"
             android:textColor="@color/text_primary"
             android:textSize="@dimen/text_xxlarge"
             android:textStyle="bold"
@@ -34,60 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/welcome_title" />
 
-        <LinearLayout
-            android:id="@+id/mood_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/welcome_subtitle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:background="@drawable/bg_card"
-                android:elevation="2dp"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="@dimen/spacing_small"
-                android:text="Счастливый"
-                android:textColor="@color/text_primary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:background="@drawable/bg_card"
-                android:elevation="2dp"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="@dimen/spacing_small"
-                android:text="Спокойный"
-                android:textColor="@color/text_primary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:background="@drawable/bg_card"
-                android:elevation="2dp"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="@dimen/spacing_small"
-                android:text="Грустный"
-                android:textColor="@color/text_primary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_small"
-                android:background="@drawable/bg_card"
-                android:elevation="2dp"
-                android:paddingHorizontal="@dimen/spacing_medium"
-                android:paddingVertical="@dimen/spacing_small"
-                android:text="Тревожный"
-                android:textColor="@color/text_primary" />
-
-        </LinearLayout>
-
         <TextView
             android:id="@+id/daily_meditation_title"
             android:layout_width="0dp"
@@ -99,7 +45,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mood_container" />
+            app:layout_constraintTop_toBottomOf="@id/welcome_subtitle" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/daily_meditation_card"
@@ -161,31 +107,16 @@
             android:textColor="@color/text_primary"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/see_all_recommended"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/daily_meditation_card" />
-
-        <TextView
-            android:id="@+id/see_all_recommended"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/see_all"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/text_small"
-            app:layout_constraintBottom_toBottomOf="@id/recommended_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/recommended_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommended_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:paddingStart="0dp"
-            android:paddingEnd="@dimen/spacing_medium"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:nestedScrollingEnabled="false"
             app:layout_constraintTop_toBottomOf="@id/recommended_title" />
 
         <TextView
@@ -197,32 +128,19 @@
             android:textColor="@color/text_primary"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/see_all_categories"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recommended_recycler" />
-
-        <TextView
-            android:id="@+id/see_all_categories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/see_all"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/text_small"
-            app:layout_constraintBottom_toBottomOf="@id/categories_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/categories_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categories_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:paddingStart="0dp"
-            android:paddingEnd="@dimen/spacing_medium"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/categories_title" />
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/categories_title"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

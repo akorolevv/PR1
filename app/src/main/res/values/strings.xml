@@ -34,14 +34,23 @@
 
     <!-- Главный экран -->
     <string name="home_title">Добрый день</string>
-    <string name="home_subtitle">Как вы себя чувствуете сегодня?</string>
-    <string name="recommended">Рекомендуемые медитации</string>
+    <string name="home_subtitle">Выберите упражнение для начала практики</string>
+    <string name="recommended">Рекомендуемые упражнения</string>
     <string name="daily_meditation">Медитация дня</string>
     <string name="popular">Популярные</string>
     <string name="categories">Категории</string>
     <string name="see_all">Смотреть все</string>
 
-    <!-- Категории -->
+    <!-- НОВЫЕ СТРОКИ ДЛЯ КАТЕГОРИЙ -->
+    <string name="category_breathing">Дыхание</string>
+    <string name="category_stretching">Растяжка</string>
+    <string name="category_strength">Сила</string>
+    <string name="category_cardio">Кардио</string>
+    <string name="category_exercises_title">Упражнения категории</string>
+    <string name="no_exercises_found">Упражнения не найдены</string>
+    <string name="try_another_category">Попробуйте другую категорию</string>
+
+    <!-- Категории (старые, оставляем для обратной совместимости) -->
     <string name="category_sleep">Сон</string>
     <string name="category_anxiety">Тревога</string>
     <string name="category_stress">Стресс</string>
@@ -73,11 +82,6 @@
     <string name="status_too_long_error">Статус не может быть длиннее 255 символов</string>
     <string name="edit_status_title">Редактирование статуса</string>
     <string name="edit_status_message">Расскажите о себе или своих целях в медитации</string>
-
-    <!-- Убираем старые строки статистики -->
-    <!-- <string name="profile_minutes">Минуты медитации</string> -->
-    <!-- <string name="profile_sessions">Сессии</string> -->
-    <!-- <string name="profile_days">Дни подряд</string> -->
 
     <!-- Детали медитации -->
     <string name="meditation_duration">%d мин</string>
