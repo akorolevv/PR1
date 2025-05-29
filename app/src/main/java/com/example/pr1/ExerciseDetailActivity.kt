@@ -2,12 +2,11 @@ package com.example.pr1
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.pr1.data.UserManager
 import com.example.pr1.data.models.ExerciseResponse
 import com.example.pr1.databinding.ActivityExerciseDetailBinding
 
-class ExerciseDetailActivity : AppCompatActivity() {
+class ExerciseDetailActivity : BaseActivity() {
 
     private lateinit var binding: ActivityExerciseDetailBinding
     private lateinit var userManager: UserManager
@@ -27,10 +26,6 @@ class ExerciseDetailActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Применяем тему перед вызовом super.onCreate()
-        val app = applicationContext as App
-        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
-
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)

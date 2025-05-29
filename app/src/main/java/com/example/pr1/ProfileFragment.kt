@@ -4,6 +4,8 @@ package com.example.pr1
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +20,10 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var userManager: UserManager
+
+    // Защита от множественных переключений темы
+    private var isThemeSwitching = false
+    private val themeHandler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -136,16 +142,20 @@ class ProfileFragment : Fragment() {
         userManager.updateUserStatus(
             newStatus = newStatus,
             onSuccess = { updatedStatus ->
-                requireActivity().runOnUiThread {
-                    binding.profileStatus.text = updatedStatus
-                    binding.editStatusButton.isEnabled = true
-                    Toast.makeText(requireContext(), "Статус обновлен!", Toast.LENGTH_SHORT).show()
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        binding.profileStatus.text = updatedStatus
+                        binding.editStatusButton.isEnabled = true
+                        Toast.makeText(requireContext(), "Статус обновлен!", Toast.LENGTH_SHORT).show()
+                    }
                 }
             },
             onError = { errorMessage ->
-                requireActivity().runOnUiThread {
-                    binding.editStatusButton.isEnabled = true
-                    Toast.makeText(requireContext(), "Ошибка: $errorMessage", Toast.LENGTH_LONG).show()
+                if (isAdded) {
+                    requireActivity().runOnUiThread {
+                        binding.editStatusButton.isEnabled = true
+                        Toast.makeText(requireContext(), "Ошибка: $errorMessage", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         )
@@ -160,10 +170,31 @@ class ProfileFragment : Fragment() {
 
         // Устанавливаем обработчик изменения переключателя
         binding.themeSwitcher.setOnCheckedChangeListener { _, isChecked ->
-            app.switchTheme(isChecked)
+            // Защита от множественных быстрых переключений
+            if (isThemeSwitching) {
+                return@setOnCheckedChangeListener
+            }
 
-            // Перезапускаем активность для применения новой темы
-            requireActivity().recreate()
+            // Проверяем, действительно ли тема изменилась
+            val themeChanged = app.switchTheme(isChecked)
+
+            if (themeChanged) {
+                isThemeSwitching = true
+
+                // Отключаем переключатель на время смены темы
+                binding.themeSwitcher.isEnabled = false
+
+                // Перезапускаем активность для применения новой темы
+                requireActivity().recreate()
+
+                // Через некоторое время включаем обратно (на случай если что-то пойдет не так)
+                themeHandler.postDelayed({
+                    if (isAdded && _binding != null) {
+                        binding.themeSwitcher.isEnabled = true
+                        isThemeSwitching = false
+                    }
+                }, 2000)
+            }
         }
     }
 
@@ -171,10 +202,16 @@ class ProfileFragment : Fragment() {
         super.onResume()
         // Обновляем информацию о пользователе при возврате на экран
         setupUserInfo()
+
+        // Сбрасываем флаг переключения темы на случай если что-то пошло не так
+        isThemeSwitching = false
+        binding.themeSwitcher.isEnabled = true
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        // Очищаем обработчики
+        themeHandler.removeCallbacksAndMessages(null)
         _binding = null
     }
 }

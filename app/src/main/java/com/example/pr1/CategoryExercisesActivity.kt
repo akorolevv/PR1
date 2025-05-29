@@ -5,13 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pr1.data.ExerciseRepository
 import com.example.pr1.data.models.ExerciseResponse
 import com.example.pr1.databinding.ActivityCategoryExercisesBinding
 
-class CategoryExercisesActivity : AppCompatActivity() {
+class CategoryExercisesActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCategoryExercisesBinding
     private lateinit var exerciseRepository: ExerciseRepository
@@ -23,10 +22,6 @@ class CategoryExercisesActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Применяем тему перед вызовом super.onCreate()
-        val app = applicationContext as App
-        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
-
         super.onCreate(savedInstanceState)
         binding = ActivityCategoryExercisesBinding.inflate(layoutInflater)
         setContentView(binding.root)

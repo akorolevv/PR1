@@ -3,20 +3,15 @@ package com.example.pr1
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.pr1.data.UserManager
 import com.example.pr1.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Применяем тему перед вызовом super.onCreate()
-        val app = applicationContext as App
-        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
-
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,16 +39,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun performLogin() {
-        val email = binding.emailInput.text.toString().trim()  // ИЗМЕНЕНО: теперь это email
+        val email = binding.emailInput.text.toString().trim()
         val password = binding.passwordInput.text.toString().trim()
 
         // Простая валидация
         if (email.isEmpty()) {
-            binding.emailLayout.error = "Введите email"  // ИЗМЕНЕНО: сообщение об email
+            binding.emailLayout.error = "Введите email"
             return
         }
 
-        // ДОБАВЛЕНО: валидация формата email
+        // Валидация формата email
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.emailLayout.error = "Введите корректный email"
             return
@@ -73,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.text = "Входим..."
 
         userManager.loginUser(
-            email = email,  // ИЗМЕНЕНО: передаем email
+            email = email,
             password = password,
             onSuccess = { authResponse ->
                 runOnUiThread {

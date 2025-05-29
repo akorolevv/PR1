@@ -5,24 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.pr1.databinding.ActivityOnboardingBinding
 import com.example.pr1.databinding.ItemOnboardingBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : BaseActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private val onboardingItems = mutableListOf<OnboardingItem>()
     private var currentPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Применяем тему перед вызовом super.onCreate()
-        val app = applicationContext as App
-        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
-
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)

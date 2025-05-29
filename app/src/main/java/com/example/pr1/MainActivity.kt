@@ -3,22 +3,17 @@ package com.example.pr1
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.pr1.data.UserManager
 import com.example.pr1.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Устанавливаем тему до вызова super.onCreate и setContentView
-        val app = applicationContext as App
-        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
-
         super.onCreate(savedInstanceState)
 
         // Инициализируем UserManager
@@ -62,11 +57,17 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun loadFragment(fragment: Fragment?): Boolean {
         fragment?.let {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, it)
-                .commit()
-            return true
+            try {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, it)
+                    .commit()
+                return true
+            } catch (e: Exception) {
+                // Логируем ошибку, но не крашим приложение
+                e.printStackTrace()
+                return false
+            }
         }
         return false
     }
