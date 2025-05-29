@@ -21,8 +21,8 @@ class App : Application() {
         val sharedPrefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         darkTheme = sharedPrefs.getBoolean(DARK_THEME, false)
 
-        // Устанавливаем тему согласно сохраненным настройкам
-        applyTheme(darkTheme)
+        // Устанавливаем глобальную тему приложения
+        applyGlobalTheme(darkTheme)
     }
 
     fun switchTheme(darkThemeEnabled: Boolean) {
@@ -34,11 +34,16 @@ class App : Application() {
             .putBoolean(DARK_THEME, darkThemeEnabled)
             .apply()
 
-        applyTheme(darkThemeEnabled)
+        // Применяем глобальную тему
+        applyGlobalTheme(darkThemeEnabled)
     }
 
-    private fun applyTheme(darkThemeEnabled: Boolean) {
-        // Устанавливаем тему для всех активностей
-        setTheme(if (darkThemeEnabled) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
+    private fun applyGlobalTheme(darkThemeEnabled: Boolean) {
+        // Устанавливаем глобальную тему через AppCompatDelegate
+        if (darkThemeEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 }

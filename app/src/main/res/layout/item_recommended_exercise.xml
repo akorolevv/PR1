@@ -6,7 +6,7 @@
     android:layout_margin="@dimen/spacing_small"
     app:cardCornerRadius="@dimen/radius_medium"
     app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/card_bg">
+    app:cardBackgroundColor="?attr/appSurfaceColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Название упражнения"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_medium"
             android:textStyle="bold"
             android:maxLines="2"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:text="10 мин"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_small" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:text="Начинающий"
-            android:textColor="@color/primary"
+            android:textColor="?attr/colorPrimary"
             android:textSize="@dimen/text_small"
             android:textStyle="bold" />
 

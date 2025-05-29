@@ -11,6 +11,10 @@ class MeditationDetailsActivity : AppCompatActivity() {
     private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Применяем тему перед вызовом super.onCreate()
+        val app = applicationContext as App
+        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMeditationDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)

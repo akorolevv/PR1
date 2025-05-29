@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="?attr/appBackgroundColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xlarge"
             android:text="@string/register_title"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_title"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/register_subtitle"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +97,8 @@
             android:text="@string/register_action"
             android:textAllCaps="false"
             android:textSize="@dimen/text_medium"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
             app:cornerRadius="@dimen/radius_medium"
             app:layout_constraintTop_toBottomOf="@id/password_layout" />
 
@@ -115,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/already_have_account"
-                android:textColor="@color/text_secondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textSize="@dimen/text_small" />
 
             <TextView
@@ -124,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
                 android:text="@string/sign_in"
-                android:textColor="@color/primary"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
         </LinearLayout>

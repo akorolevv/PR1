@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacing_large">
+    android:padding="@dimen/spacing_large"
+    android:background="?attr/appBackgroundColor">
 
     <ImageView
         android:id="@+id/image"
@@ -12,6 +13,7 @@
         android:layout_marginTop="@dimen/spacing_large"
         android:contentDescription="Onboarding image"
         android:scaleType="centerInside"
+        app:tint="?attr/appTextSecondaryColor"
         app:layout_constraintBottom_toTopOf="@id/title"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_xlarge"
         android:gravity="center"
-        android:textColor="@color/text_primary"
+        android:textColor="?attr/appTextPrimaryColor"
         android:textSize="@dimen/text_xxlarge"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/description"
@@ -40,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_medium"
         android:gravity="center"
-        android:textColor="@color/text_secondary"
+        android:textColor="?attr/appTextSecondaryColor"
         android:textSize="@dimen/text_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

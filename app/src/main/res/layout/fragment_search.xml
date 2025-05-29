@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacing_medium">
+    android:padding="@dimen/spacing_medium"
+    android:background="?attr/appBackgroundColor">
 
     <TextView
         android:id="@+id/search_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/search_title"
-        android:textColor="@color/text_primary"
+        android:textColor="?attr/appTextPrimaryColor"
         android:textSize="@dimen/text_xxlarge"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/input_height"
         android:layout_marginTop="@dimen/spacing_medium"
-        android:background="@drawable/bg_search"
+        android:background="?attr/appSurfaceColor"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/spacing_medium"
@@ -32,7 +33,7 @@
             android:layout_height="@dimen/icon_size"
             android:contentDescription="Search icon"
             android:src="@android:drawable/ic_menu_search"
-            app:tint="@color/text_secondary" />
+            app:tint="?attr/appTextSecondaryColor" />
 
         <EditText
             android:id="@+id/search_input"
@@ -45,8 +46,8 @@
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary"
+            android:textColor="?attr/appTextPrimaryColor"
+            android:textColorHint="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium" />
 
         <ImageView
@@ -56,7 +57,7 @@
             android:contentDescription="Clear search"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:visibility="gone"
-            app:tint="@color/text_secondary" />
+            app:tint="?attr/appTextSecondaryColor" />
     </LinearLayout>
 
     <!-- История поиска -->
@@ -81,7 +82,7 @@
                 android:layout_weight="1"
                 android:text="История поиска"
                 android:textStyle="bold"
-                android:textColor="@color/text_primary"
+                android:textColor="?attr/appTextPrimaryColor"
                 android:textSize="@dimen/text_medium" />
 
             <Button
@@ -129,7 +130,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            app:tint="@color/text_secondary" />
+            app:tint="?attr/appTextSecondaryColor" />
 
         <TextView
             android:id="@+id/empty_state_text"
@@ -138,7 +139,7 @@
             android:layout_marginTop="@dimen/spacing_medium"
             android:gravity="center"
             android:text="@string/search_placeholder"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/empty_state_description"
@@ -154,7 +155,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center"
             android:text="Введите запрос для поиска упражнений"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium"
             app:layout_constraintBottom_toTopOf="@id/retry_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +182,7 @@
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_gravity="center"
-        android:indeterminateTint="@color/primary"
+        android:indeterminateTint="?attr/colorPrimary"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

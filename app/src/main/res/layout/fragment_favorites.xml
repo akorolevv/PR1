@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacing_medium">
+    android:padding="@dimen/spacing_medium"
+    android:background="?attr/appBackgroundColor">
 
     <TextView
         android:id="@+id/favorites_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_favorites"
-        android:textColor="@color/text_primary"
+        android:textColor="?attr/appTextPrimaryColor"
         android:textSize="@dimen/text_xxlarge"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,14 +43,14 @@
             android:layout_height="@dimen/icon_size_large"
             android:contentDescription="No favorites"
             android:src="@android:drawable/btn_star"
-            app:tint="@color/text_secondary" />
+            app:tint="?attr/appTextSecondaryColor" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
             android:text="Нет избранных медитаций"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_large"
             android:textStyle="bold" />
 
@@ -59,7 +60,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center"
             android:text="Добавьте медитации в избранное, чтобы они отображались здесь"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

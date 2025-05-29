@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="?attr/appBackgroundColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Здравствуйте"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_xxlarge"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
             android:text="@string/home_subtitle"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
             android:text="@string/daily_meditation"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/card_height"
             android:layout_marginTop="@dimen/spacing_medium"
-            app:cardBackgroundColor="@color/primary"
+            app:cardBackgroundColor="?attr/colorPrimary"
             app:cardCornerRadius="@dimen/radius_medium"
             app:cardElevation="4dp"
             app:layout_constraintTop_toBottomOf="@id/daily_meditation_title">
@@ -67,7 +68,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Утренняя медитация для энергии"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="@dimen/text_large"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_small"
                     android:text="10 минут"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="@dimen/text_small"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/daily_meditation_name" />
@@ -89,9 +90,9 @@
                     android:id="@+id/start_meditation_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="?attr/appSurfaceColor"
                     android:text="@string/meditation_start"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/appTextPrimaryColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -104,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
             android:text="@string/recommended"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
             android:text="@string/categories"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Атрибуты для кастомных цветов темы -->
+    <attr name="appBackgroundColor" format="color" />
+    <attr name="appSurfaceColor" format="color" />
+    <attr name="appTextPrimaryColor" format="color" />
+    <attr name="appTextSecondaryColor" format="color" />
+    <attr name="appDividerColor" format="color" />
+    <attr name="appPrimaryColor" format="color" />
+</resources>

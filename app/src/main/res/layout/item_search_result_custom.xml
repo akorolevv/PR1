@@ -6,20 +6,20 @@
     android:layout_margin="@dimen/spacing_small"
     app:cardCornerRadius="@dimen/radius_medium"
     app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/card_bg">
+    app:cardBackgroundColor="?attr/appSurfaceColor">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/spacing_medium"
-        android:background="@color/card_bg">
+        android:background="?attr/appSurfaceColor">
 
         <TextView
             android:id="@+id/meditation_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_large"
             android:textStyle="bold"
             android:text="Название упражнения" />
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_small"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium"
             android:text="Дополнительная информация" />
     </LinearLayout>

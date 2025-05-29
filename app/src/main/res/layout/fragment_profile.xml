@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="?attr/appBackgroundColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_title"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_xxlarge"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_title"
-            app:tint="@color/primary" />
+            app:tint="?attr/colorPrimary" />
 
         <TextView
             android:id="@+id/profile_name"
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_medium"
             android:text="Пользователь"
-            android:textColor="@color/text_primary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="@dimen/text_xlarge"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="user@example.com"
-            android:textColor="@color/text_secondary"
+            android:textColor="?attr/appTextSecondaryColor"
             android:textSize="@dimen/text_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
-            app:cardBackgroundColor="@color/card_bg"
+            app:cardBackgroundColor="?attr/appSurfaceColor"
             app:cardCornerRadius="@dimen/radius_medium"
             app:cardElevation="2dp"
             app:layout_constraintTop_toBottomOf="@id/profile_email">
@@ -85,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Мой статус"
-                        android:textColor="@color/text_primary"
+                        android:textColor="?attr/appTextPrimaryColor"
                         android:textSize="@dimen/text_large"
                         android:textStyle="bold" />
 
@@ -97,7 +98,7 @@
                         android:contentDescription="Редактировать статус"
                         android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:padding="4dp"
-                        app:tint="@color/primary" />
+                        app:tint="?attr/colorPrimary" />
                 </LinearLayout>
 
                 <TextView
@@ -106,9 +107,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_small"
                     android:text="Новичок в медитации 🧘‍♀️"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="?attr/appTextSecondaryColor"
                     android:textSize="@dimen/text_medium"
-                    android:background="@drawable/bg_card"
+                    android:background="?attr/appSurfaceColor"
                     android:padding="@dimen/spacing_medium"
                     android:minHeight="48dp"
                     android:gravity="center_vertical" />
@@ -120,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_large"
-            app:cardBackgroundColor="@color/card_bg"
+            app:cardBackgroundColor="?attr/appSurfaceColor"
             app:cardCornerRadius="@dimen/radius_medium"
             app:cardElevation="2dp"
             app:layout_constraintTop_toBottomOf="@id/status_card">
@@ -144,10 +145,11 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Темная тема"
-                        android:textColor="@color/text_primary"
+                        android:textColor="?attr/appTextPrimaryColor"
                         android:textSize="@dimen/text_medium"
                         android:drawableStart="@android:drawable/ic_menu_day"
-                        android:drawablePadding="@dimen/spacing_medium" />
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:drawableTint="?attr/appTextPrimaryColor" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/theme_switcher"
@@ -158,7 +160,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/divider" />
+                    android:background="?attr/appDividerColor" />
 
                 <TextView
                     android:id="@+id/favorites_button"
@@ -166,15 +168,16 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@android:drawable/btn_star"
                     android:drawablePadding="@dimen/spacing_medium"
+                    android:drawableTint="?attr/appTextPrimaryColor"
                     android:padding="@dimen/spacing_medium"
                     android:text="@string/profile_favorites"
-                    android:textColor="@color/text_primary"
+                    android:textColor="?attr/appTextPrimaryColor"
                     android:textSize="@dimen/text_medium" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/divider" />
+                    android:background="?attr/appDividerColor" />
 
                 <TextView
                     android:id="@+id/logout_button"
@@ -182,6 +185,7 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@android:drawable/ic_lock_power_off"
                     android:drawablePadding="@dimen/spacing_medium"
+                    android:drawableTint="@color/error"
                     android:padding="@dimen/spacing_medium"
                     android:text="@string/profile_logout"
                     android:textColor="@color/error"

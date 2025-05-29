@@ -13,6 +13,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Применяем тему перед вызовом super.onCreate()
+        val app = applicationContext as App
+        setTheme(if (app.darkTheme) R.style.Theme_MeditationApp_Dark else R.style.Theme_MeditationApp)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 

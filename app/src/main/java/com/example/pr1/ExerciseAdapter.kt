@@ -2,7 +2,6 @@ package com.example.pr1
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pr1.data.models.ExerciseResponse
 import com.example.pr1.databinding.ItemSearchResultCustomBinding
@@ -46,10 +45,7 @@ class ExerciseAdapter(
                 }
             }
 
-            // Улучшаем визуальное представление
-            binding.root.setBackgroundColor(ContextCompat.getColor(binding.root.context, android.R.color.white))
-            binding.meditationTitle.setTextColor(ContextCompat.getColor(binding.root.context, R.color.text_primary))
-            binding.meditationInfo.setTextColor(ContextCompat.getColor(binding.root.context, R.color.text_secondary))
+            // УБРАНО: Ручное установление цветов - теперь цвета берутся из темы через XML
         }
 
         fun bind(exercise: ExerciseResponse) {
