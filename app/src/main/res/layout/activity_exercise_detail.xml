@@ -16,7 +16,7 @@
             android:layout_height="250dp"
             android:contentDescription="Exercise image"
             android:scaleType="centerCrop"
-            android:src="@color/primary"
+            android:src="@color/gray_medium"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Кнопка назад -->
@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_large"
+            android:background="@color/background"
             app:layout_constraintTop_toBottomOf="@id/exercise_image">
 
             <!-- Название упражнения -->

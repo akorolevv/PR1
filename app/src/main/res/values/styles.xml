@@ -10,13 +10,14 @@
         <item name="android:paddingBottom">@dimen/spacing_medium</item>
         <item name="android:minHeight">@dimen/button_height</item>
         <item name="cornerRadius">@dimen/radius_medium</item>
+        <item name="backgroundTint">@color/primary</item>
     </style>
 
     <style name="Button.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textColor">@color/primary</item>
         <item name="android:textSize">@dimen/text_medium</item>
         <item name="strokeColor">@color/primary</item>
-        <item name="strokeWidth">1dp</item>
+        <item name="strokeWidth">2dp</item>
         <item name="android:minHeight">@dimen/button_height</item>
         <item name="cornerRadius">@dimen/radius_medium</item>
     </style>
@@ -49,6 +50,8 @@
         <item name="boxCornerRadiusBottomStart">@dimen/radius_small</item>
         <item name="boxCornerRadiusTopEnd">@dimen/radius_small</item>
         <item name="boxCornerRadiusTopStart">@dimen/radius_small</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
     </style>
 
     <style name="TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">

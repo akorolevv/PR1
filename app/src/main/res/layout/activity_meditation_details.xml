@@ -15,7 +15,7 @@
             android:layout_height="250dp"
             android:contentDescription="Meditation cover"
             android:scaleType="centerCrop"
-            android:src="@color/primary"
+            android:src="@color/gray_medium"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -46,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/spacing_large"
+            android:background="@color/background"
             app:layout_constraintTop_toBottomOf="@id/meditation_image">
 
             <TextView
@@ -146,6 +147,8 @@
                 android:text="@string/meditation_start"
                 android:textAllCaps="false"
                 android:textSize="@dimen/text_medium"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/white"
                 app:cornerRadius="@dimen/radius_medium"
                 app:layout_constraintTop_toBottomOf="@id/meditation_author" />
         </androidx.constraintlayout.widget.ConstraintLayout>
